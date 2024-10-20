@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="JDBC">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/adaptive" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/alwaysencrypted" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/azureactivedirectoryauthentication" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/connections" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/constrained" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/dataclassification" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/datatypes" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/resultsets" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC/sqljdbc_12.8/rus/samples/sparse" />
+      <root url="file://$USER_HOME$/Desktop/Geekbrains/JDBC" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Desktop/Geekbrains/JDBC" recursive="false" type="SOURCES" />
+  </library>
+</component>
