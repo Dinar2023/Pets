@@ -1,99 +1,64 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Controller {
     ArrayList <Pets> pets = new ArrayList<Pets>();
     ViewCons viewCons = new ViewCons();
 void start(){
+    int id =1;
     while (true) {
+
         String choise = viewCons.getUserChoise();
         if (choise.equals("1")) {
-            Toy newToy = new Toy();
-            String name = viewCons.setToyName();
-
-            boolean containsName = false;
-            for (Toy toy : toys) { //Игрушка с таким именем существует?
-                if (toy.getName().equals(name)) {
-                    containsName = true;
-                    break;
-                }
+            String choisePet = viewCons.getTypePet();
+            if (choisePet.equals("1")){
+                Cats cat = new Cats();
+                cat.setName(viewCons.setPetName());
+                cat.setBirthDate(viewCons.setBirthDate());
+                cat.fillcommandList();
+                pets.add(cat);
+                cat.setId(id);
+                id++;
             }
-            if (!containsName) { // Если ее нет, то добавляем ее в список игрушек
-                newToy.setName(name);
-                newToy.setChance(viewCons.setToyChance());
-                newToy.setNumber(viewCons.setToyNumbers());
-                toys.add(newToy);
-            } else
-                viewCons.printMessage("Игрушка с таким именем уже существует"); // Если такая игрушка есть, сообщаем пользователю
-        }
+            if (choisePet.equals("2")){
+                Dogs dog = new Dogs();
+                dog.setName(viewCons.setPetName());
+                dog.setBirthDate(viewCons.setBirthDate());
+                dog.fillcommandList();
+                pets.add(dog);
+                dog.setId(id);
+                id++;
+            }
+            if (choisePet.equals("3")){
+                Hamster hamster = new Hamster();
+                hamster.setName(viewCons.setPetName());
+                hamster.setBirthDate(viewCons.setBirthDate());
+                hamster.fillcommandList();
+                pets.add(hamster);
+                hamster.setId(id);
+                id++;
+            }
 
+        }
         if (choise.equals("2")) {
-            String name = viewCons.setToyName();
-            boolean containsName = false;
-            for (Toy toy : toys) { //Игрушка с таким именем существует?
-                if (toy.getName().equals(name)) {
-                    containsName = true;
-                    toy.setChance(viewCons.setToyChance());
-                    break;
-                }
+            ArrayList <Pets> sortedPets= pets;
+            sortedPets.sort(Comparator.comparing(Pets::getBirthDate));
+           viewCons.printPets(sortedPets);
+        };
+
+        if (choise.equals("3")){
+            int choiseID = viewCons.choiseID(pets)-1;
+            Pets learPet = pets.get(choiseID);
+            String newCommand = viewCons.newCommand(learPet);
+            if (newCommand != null) {
+                pets.get(choiseID).addCommand(newCommand);
             }
-            if (!containsName) viewCons.printMessage("Игрушка с таким именем не найдена");
+
+
         }
 
-        if (choise.equals("3")) {
-            String name = viewCons.setToyName();
-            boolean containsName = false;
-            for (Toy toy : toys) { //Игрушка с таким именем существует?
-                if (toy.getName().equals(name)) {
-                    containsName = true;
-                    toy.setNumber(viewCons.setToyNumbers());
-                    break;
-                }
-            }
-            if (!containsName) viewCons.printMessage("Игрушка с таким именем не найдена");
-        }
 
-        if (choise.equals("4")) {
-            ArrayList <Toy> setToys = new ArrayList<>();
-            double totalChanse = 0; //разброс вероятности (сумма всех вероятностей)
-
-            for (Toy toy : toys) { //Игрушка с таким именем существует?
-                if (toy.getNumber()>0) {
-                    totalChanse += toy.getChance();
-                    setToys.add(toy); // Если игрушка есть, добавляем ее в список на розыгрыш
-                }
-            }
-            for (Toy toy : setToys) {
-                Random random = new Random();
-                double kubik = random.nextDouble(totalChanse);
-                System.out.println(kubik + "()_+_()" + totalChanse);
-                if (kubik <= toy.getChance()) {
-                    String name = toy.getName();
-                    viewCons.printMessage("Вы выйграли "+ toy.getName());
-                    toy.setNumber(toy.getNumber()-1);
-
-//                    for (Toy toy1: toys){// Уменьшаем колличество игрушек
-//                        if (toy1.getName().equals(name)) toy1.setNumber(toy1.getNumber()-1);
-//                    }
-//
-//                    for (int i = 0; i < toys.size() ; i++) {
-//                        if (toys.get(i).getName().equals(name)){
-//                            int num = toys.get(i).getNumber()-1;
-//                            System.out.println(num);
-//                            toys.get(i).setNumber(num);
-//                        }
-//                    }
-
-                    break;
-                } else totalChanse -= toy.getChance();
-            }
-        }
-        if (choise.equals("5")) {
-            for (Toy toy : toys) {
-                viewCons.printMessage(toy.toString());
-            }
-
-        }
 
         if (choise.equals("0")) break;
 
